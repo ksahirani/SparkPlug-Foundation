@@ -1,3 +1,73 @@
+// User-Profile
+let profileDropdownList = document.querySelector(".profile-dropdown-list");
+let btn = document.querySelector(".profile-dropdown-btn");
+
+let classList = profileDropdownList.classList;
+
+const toggle = () => classList.toggle("active");
+
+window.addEventListener("click", function (e) {
+  if (!btn.contains(e.target)) classList.remove("active");
+});
+
+function saveProfile() {
+    
+    alert('Profile saved!');
+    $('#editProfileModal').modal('hide'); 
+}
+
+        // Edit-Profile
+function addUser() {
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    var user = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+        password: password
+    };
+
+    var userList = document.getElementById('userList');
+    var userHtml = `
+        <div class="user-card">
+            <p><strong>Name:</strong> ${user.firstName} ${user.lastName}</p>
+            <p><strong>Email:</strong> ${user.email}</p>
+            <p><strong>Phone:</strong> ${user.phone}</p>
+            <p><strong>Password:</strong> ${user.password}</p>
+            <button class="btn btn-primary btn-update" onclick="updateUser(this)">Update</button>
+            <button class="btn btn-danger btn-remove" onclick="removeUser(this)">Remove</button>
+        </div>
+    `;
+
+    userList.contentDocument.body.innerHTML += userHtml;
+    resetForm();
+}
+
+function updateUser(button) {
+    var userCard = button.closest('.user-card');
+    // You can implement the logic for updating a user here
+    alert("Update functionality to be implemented");
+}
+
+function removeUser(button) {
+    var userCard = button.closest('.user-card');
+    userCard.remove();
+}
+
+function resetForm() {
+    document.getElementById('userForm').reset();
+}
 // Donation
 let totalAmount = 0;
 const donationTypes = { PayPal: 0, GCash: 0, BPI: 0, Metrobank: 0, PNB: 0, UBP: 0, BDO: 0 };
