@@ -135,6 +135,160 @@
                 </div>
             </div>
         </div>
+
+            <!-- Children-->
+        <section id="children">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card mt-2">
+                            <div class="card-body">
+
+                                <!-- Add Child Button -->
+                                <div class="col-md-12 text-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addChildModal">
+                                        Add Child
+                                    </button>
+                                </div>
+
+                                <br /> <br />
+
+                                <h3 class="card-title">List of Adapted Children</h3>
+                
+                                <!-- Children Display Section -->
+                                <div class="row mt-3" id="childrenDisplay">
+                                    <!-- Children information will be displayed here -->
+                                </div>
+
+                                <br /> <br />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Child Modal -->
+                <div class="modal fade" id="addChildModal" tabindex="-1" role="dialog" aria-labelledby="addChildModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addChildModalLabel">Add Child</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Child Form -->
+                                <form id="childForm">
+                                    <div class="form-group">
+                                        <label for="childName">Child's Name:</label>
+                                        <input type="text" class="form-control" id="childName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="childAge">Age:</label>
+                                        <input type="number" class="form-control" id="childAge" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="childBirthday">Birthday:</label>
+                                        <input type="date" class="form-control" id="childBirthday" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="childGender">Gender:</label>
+                                        <select class="form-control" id="childGender" required>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="childPhoto">Add Photo:</label>
+                                        <input type="file" class="form-control-file" id="childPhoto" required>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="addChild()">Add Child</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Volunteers-->
+        <section id="volunteers">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card mt-2">
+                            <div class="card-body">
+
+                                <!-- Add Volunteers Button-->
+                                <div class="col-md-12 text-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addVolunteersModal">
+                                        Add Volunteers
+                                    </button>
+                                </div>
+
+                                <br /> <br />
+
+                                <h3 class="card-title">List of Volunteers</h3>
+
+                                <!-- volunteers display section-->
+                                <div class="row mt-3" id="volunteerDisplay">
+                                    <!-- volunteers details will be displayed here-->
+                                </div>
+
+                                <br /> <br />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Volunteers Modal-->
+                <div class="modal fade" id="addVolunteersModal" tabindex="-1" role="dialog" aria-labelledby="addChildModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addVolunteersModalLabel">Add Volunteer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Volunteers Form -->
+                                <form id="volunteerForm">
+                                    <div class="form-group">
+                                        <label for="volName">Name:</label>
+                                        <input type="text" class="form-control" id="volName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="volAge">Age:</label>
+                                        <input type="number" class="form-control" id="voldAge" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="volBirthday">Birthday:</label>
+                                        <input type="date" class="form-control" id="volBirthday" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="volGender">Gender:</label>
+                                        <select class="form-control" id="volGender" required>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="volPhoto">Add Photo:</label>
+                                        <input type="file" class="form-control-file" id="volPhoto" required>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="addVolunteer()">Add</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+            
                  <!-- Donation -->
             <section id="donation">
             <div class="container">
