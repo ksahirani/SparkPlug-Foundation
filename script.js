@@ -68,6 +68,86 @@ function removeUser(button) {
 function resetForm() {
     document.getElementById('userForm').reset();
 }
+
+//children
+const children = [];
+
+function addChild() {
+    const childName = document.getElementById('childName').value;
+    const childAge = document.getElementById('childAge').value;
+    const childBirthday = document.getElementById('childBirthday').value;
+    const childGender = document.getElementById('childGender').value;
+    const childPhoto = document.getElementById('childPhoto').files[0];
+
+    if (childName && childAge && childBirthday && childGender && childPhoto) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const newChild = {
+                name: childName,
+                age: childAge,
+                birthday: childBirthday,
+                gender: childGender,
+                photo: e.target.result
+            };
+
+            children.unshift(newChild); // Add to the beginning of the array
+            displayChildren();
+            resetChildForm();
+            $('#addChildModal').modal('hide');
+        };
+
+        reader.readAsDataURL(childPhoto);
+    } else {
+        alert('Please fill in all fields.');
+    }
+}
+
+function displayChildren() {
+    const childrenDisplay = document.getElementById('childrenDisplay');
+    childrenDisplay.innerHTML = '';
+
+    children.forEach((child, index) => {
+        const childCard = document.createElement('div');
+        childCard.classList.add('col-md-6', 'child-card');
+
+        const cardBody = document.createElement('div');
+        cardBody.classList.add('card', 'mt-2');
+
+        const cardTitle = document.createElement('h5');
+        cardTitle.classList.add('card-header');
+        cardTitle.textContent = child.name;
+
+        const cardDetails = document.createElement('ul');
+        cardDetails.classList.add('list-group', 'list-group-flush');
+        cardDetails.innerHTML = `
+            <li class="list-group-item"><strong>Age:</strong> ${child.age}</li>
+            <li class="list-group-item"><strong>Birthday:</strong> ${child.birthday}</li>
+            <li class="list-group-item"><strong>Gender:</strong> ${child.gender}</li>
+        `;
+
+        const cardPhoto = document.createElement('img');
+        cardPhoto.classList.add('card-img-bottom');
+        cardPhoto.src = child.photo;
+        cardPhoto.alt = child.name;
+
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardDetails);
+        cardBody.appendChild(cardPhoto);
+        childCard.appendChild(cardBody);
+
+        childrenDisplay.appendChild(childCard);
+    });
+}
+
+function resetChildForm() {
+    document.getElementById('childName').value = '';
+    document.getElementById('childAge').value = '';
+    document.getElementById('childBirthday').value = '';
+    document.getElementById('childGender').value = 'male';
+    document.getElementById('childPhoto').value = '';
+}
+
 // Donation
 let totalAmount = 0;
 const donationTypes = { PayPal: 0, GCash: 0, BPI: 0, Metrobank: 0, PNB: 0, UBP: 0, BDO: 0 };
